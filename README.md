@@ -1,2 +1,2 @@
 # ITGnews
-Some tiny projects on multiple languages.
+Мои небольшие проекты на нескольких языках.
