@@ -210,7 +210,7 @@ int main()
 			field.show();
 		}
 		const unsigned long long end = clock();
-		unsigned short dif = end - start;
+		const unsigned dif = end - start;
 		cout<<endl<<"Кодирование выполнено за "<<dif<<"тик. (или ~"<<((float)dif)/CLOCKS_PER_SEC<<"сек.)"<<endl<<endl;
 	}
 }
