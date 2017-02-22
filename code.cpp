@@ -56,14 +56,14 @@ class Rule
   //получаем состояние в зависимости от окрестности
 	int when(int condition) const
 	{
-		return state[7 - condition];
+		return state[condition];
 	}
-	explicit Rule(const unsigned short ruleNumber)
+	explicit Rule(unsigned short ruleNumber)
 	{
 		if (ruleNumber > 255)
-			throw out_of_range();
+			throw out_of_range("Неверный номер правила!");
 		//разбиваем на разряды
-		for (int i = 7; i >= 0; --i)
+		for (int i = 0; i < 8; ++i)
 		{
 			state[i] = ruleNumber % 2;
 			ruleNumber /= 2;
@@ -86,7 +86,7 @@ class Rule
 			else break;
 		}
 		//разбиваем на разряды
-		for (int i = 7; i >= 0; --i)
+		for (int i = 0; i < 8; ++i)
 		{
 			state[i] = ruleNumber % 2;
 			ruleNumber /= 2;
@@ -108,22 +108,21 @@ class Field
 		cout<<"Введите символ для зашифровки: ";
 		char c;
 		cin >> c;
-		int n = (int)c;
 		for (int i = currentField.size() - 1; i >= 0; --i)
 		{
-			currentField[i] = n % 2;
-			n /= 2;
+			currentField[i] = c % 2;
+			c /= 2;
 		}
 	}
   public:
 	Field(Rule rule):rule(rule)
 	{
 		cout << "Введите длинну поля: ";
-		unsigned width;
+		unsigned lenght;
 		//проверка ввода
 		while (true)
 		{
-			cin >> width;
+			cin >> lenght;
 			if (!cin)
 			{
 				cout<<"Ошибка, введите положительное число!\n";
@@ -132,14 +131,14 @@ class Field
 			}
 			else break;
 		}
-		currentField.resize(width);
-		nextField.resize(width);
+		currentField.resize(lenght);
+		nextField.resize(lenght);
 		fill();
 	}
-	Field(const int width, rule):rule(rule)
+	Field(const int lenght, Rule rule):rule(rule)
 	{
-		currentField.resize(width);
-		nextField.resize(width);
+		currentField.resize(lenght);
+		nextField.resize(lenght);
 		fill();
 	}
 	//просчёт следующего поколения
@@ -177,6 +176,19 @@ class Field
 		}
 		cout << endl;
 	}
+	//getter'ы и setter'ы
+	void setRule(Rule newRule)
+	{
+		rule = newRule;
+	}
+	Rule getRule()
+	{
+		return rule;
+	}
+	unsigned getLenght()
+	{
+		return currentField.size();
+	}
 };
 
 int main()
@@ -184,8 +196,10 @@ int main()
 	//выхода нет
 	while (true)
 	{
-		//символ->1 байт->8 бит
-		Field field(7);
+		//правило перехода состояний
+		Rule rule;
+		//символ->1 байт->8 бит, но 1 бит под знак
+		Field field(7, rule);
 		const unsigned long long start = clock();
 		//выводим 256 поколений
 		for (int i = 1; i < 257; ++i)
