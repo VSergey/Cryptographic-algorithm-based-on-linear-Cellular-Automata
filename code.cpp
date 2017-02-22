@@ -44,6 +44,7 @@ v 0.8 08/04/2016
 #include <algorithm>
 #include <ctime>
 #include <cctype>
+#include <stdexcept>
 using namespace std;
 
 //правило перехода
@@ -57,16 +58,16 @@ class Rule
 	{
 		return state[7 - condition];
 	}
-	Rule(int a, int b, int c, int d, int e, int f, int g, int h)
+	explicit Rule(const unsigned short ruleNumber)
 	{
-		state[0] = a;
-		state[1] = b;
-		state[2] = c;
-		state[3] = d;
-		state[4] = e;
-		state[5] = f;
-		state[6] = g;
-		state[7] = h;
+		if (ruleNumber > 255)
+			throw out_of_range();
+		//разбиваем на разряды
+		for (int i = 7; i >= 0; --i)
+		{
+			state[i] = ruleNumber % 2;
+			ruleNumber /= 2;
+		}
 	}
 	Rule()
 	{
@@ -115,7 +116,7 @@ class Field
 		}
 	}
   public:
-	Field()
+	Field(Rule rule):rule(rule)
 	{
 		cout << "Введите длинну поля: ";
 		unsigned width;
@@ -135,7 +136,7 @@ class Field
 		nextField.resize(width);
 		fill();
 	}
-	Field(const int width)
+	Field(const int width, rule):rule(rule)
 	{
 		currentField.resize(width);
 		nextField.resize(width);
