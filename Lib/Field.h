@@ -1,5 +1,9 @@
 #ifndef CRYPTO_FIELD_H
 #define CRYPTO_FIELD_H
+
+#include <Rule.h>
+#include <vector>
+
 class Field
 {
 	private:
@@ -8,10 +12,13 @@ class Field
 		std::vector<unsigned short> currentField;
 		std::vector<unsigned short> nextField;
 	public:
-		Field(unsigned char letter, const Rule& rule):rule(rule);
-		unsigned char operator ();
-		Rule getRule() const;
-		void setRule(const Rule& newRule);
-		unsigned short getLenght() const;
-}
+		Field(unsigned char letter, Rule rule):rule(rule)
+		{
+			
+		}
+		unsigned char operator () ();
+		inline Rule getRule() const;
+		void setRule(Rule newRule);
+		inline unsigned short getLenght() const;
+};
 #endif
