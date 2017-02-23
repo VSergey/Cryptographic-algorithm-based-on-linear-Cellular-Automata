@@ -3,9 +3,9 @@
 class Rule
 {
 	private:
-		int state[8];
+		unsigned short state[8];
 	public:
 		Rule(const unsigned short ruleNumber);
-		int getState(const unsigned neighborhood) const;
+		unsigned short getState(const unsigned short neighborhood) const;
 };
 #endif
