@@ -1,6 +1,6 @@
 #include <iostream>
-#include <Field.h>
-#include <Rule.h>
+#include "Field.cpp"
+#include "Rule.cpp"
 using namespace std;
 
 int main()
