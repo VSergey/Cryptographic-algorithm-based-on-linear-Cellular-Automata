@@ -70,8 +70,8 @@ class Field
 		cin >> c;
 		for (int i = currentField.size() - 1; i >= 0; --i)
 		{
-			currentField[i] = c % 2;
-			c /= 2;
+			currentField[i] = c%2;
+			c/=2;
 		}
 	}
   public:
@@ -119,10 +119,10 @@ class Field
 	{
 		char num = 0;
 		//выводим клетки + переводим поле в код символа
-		for (int cou = 0, base = 64; cou < nextField.size(); ++cou, base /= 2)
+		for (int cou = 0; cou < nextField.size(); ++cou)
 		{
 			cout << nextField[cou];
-			num += (nextField[cou] % 2) * base;
+			num += nextField[cou] << (nextField.size() - 1- cou);
 		}
 		//выводим символ
 		cout << '\t';
@@ -159,7 +159,7 @@ int main()
 		//правило перехода состояний
 		Rule rule;
 		//символ->1 байт->8 бит, но 1 бит под знак
-		Field field(7, rule);
+		Field field(8, rule);
 		const unsigned long long start = clock();
 		//выводим 256 поколений
 		for (int i = 1; i < 257; ++i)
