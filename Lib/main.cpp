@@ -1,10 +1,12 @@
+//Небольшой тест
+#include <Field.hpp>
 #include <iostream>
-#include "Field.cpp"
-#include "Rule.cpp"
 using namespace std;
 
 int main()
 {
-	Field f('9', Rule(110));
-	cout<<f();
+	for (int i = 0; i<256; ++i)
+	{
+		cout<<(int)Field(110, i)()<<endl;
+	}
 }
