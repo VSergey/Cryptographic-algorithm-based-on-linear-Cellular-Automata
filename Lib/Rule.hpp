@@ -1,4 +1,7 @@
 //Ура!!!
+#ifndef LIB_RULE_H
+#define LIB_RULE_H
+
 #include <stdexcept>
 #include <vector>
 #include <cstddef>
@@ -7,7 +10,7 @@ class Rule
 {
 	std::vector<bool> state;
 	public:
-		Rule2(const unsigned short number)
+		Rule(const unsigned short number)
 		{
 			state.resize(8);
 			if (number < 256)
@@ -26,3 +29,5 @@ class Rule
 				throw std::out_of_range( "Неверный случай окрестности" );
 		}
 };
+
+#endif
