@@ -12,7 +12,7 @@ class Field
   public:
 	  Field(const Rule2& rule, const unsigned char field) noexcept:rule(rule)
 	{
-		lenght = sizeof(char) * 8;
+		lenght = 8;
 		current.resize(lenght);
 		next.resize(lenght);
 		for (size_t i = 0, j = lenght - 1;  i < lenght; ++i, --j)
