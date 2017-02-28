@@ -1,5 +1,5 @@
 //Небольшой тест
-#include <Field.hpp>
+#include <Field>
 #include <iostream>
 using namespace std;
 
