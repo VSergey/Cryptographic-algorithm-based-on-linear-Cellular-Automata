@@ -3,7 +3,7 @@
 #include <vector>
 #include <cstddef>
 
-class Rule2
+class Rule
 {
 	std::vector<bool> state;
 	public:
