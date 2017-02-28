@@ -20,7 +20,7 @@ class Field
 			current[j] = field & (1 << i);
 		}
 	}
-	unsigned char operator () ()
+	unsigned char operator () () noexcept
 	{
 		for (size_t i = 1; i < lenght - 1; ++i)
 		{
