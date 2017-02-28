@@ -1,6 +1,7 @@
 //Ура!!!
 #include <algorithm>
 #include <cstddef>
+#include <climits>
 #include <Rule.hpp>
 
 class Field
@@ -8,7 +9,7 @@ class Field
 	Rule2 rule;
 	std::vector < bool > current;
 	std::vector < bool > next;
-	const size_t lenght = 8;
+	const size_t lenght = CHAR_BIT;
   public:
 	  Field(const Rule2& rule, const unsigned char field) noexcept:rule(rule)
 	{
