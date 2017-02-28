@@ -8,11 +8,10 @@ class Field
 	Rule2 rule;
 	std::vector < bool > current;
 	std::vector < bool > next;
-	size_t lenght;
+	const size_t lenght = 8;
   public:
 	  Field(const Rule2& rule, const unsigned char field) noexcept:rule(rule)
 	{
-		lenght = 8;
 		current.resize(lenght);
 		next.resize(lenght);
 		for (size_t i = 0, j = lenght - 1;  i < lenght; ++i, --j)
