@@ -1,4 +1,7 @@
 //Ура!!!
+#ifndef LIB_FIELD_H
+#define LIB_FIELD_H
+
 #include <algorithm>
 #include <cstddef>
 #include <climits>
@@ -11,7 +14,7 @@ class Field
 	std::vector < bool > next;
 	const size_t lenght = CHAR_BIT;
   public:
-	  Field(const Rule2& rule, const unsigned char field) noexcept:rule(rule)
+	  Field(const Rule& rule, const unsigned char field) noexcept:rule(rule)
 	{
 		current.resize(lenght);
 		next.resize(lenght);
@@ -35,3 +38,5 @@ class Field
 		return field;
 	}
 };
+
+#endif
