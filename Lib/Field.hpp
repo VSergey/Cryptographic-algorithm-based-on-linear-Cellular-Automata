@@ -6,7 +6,7 @@
 
 class Field
 {
-	Rule2 rule;
+	Rule rule;
 	std::vector < bool > current;
 	std::vector < bool > next;
 	const size_t lenght = CHAR_BIT;
