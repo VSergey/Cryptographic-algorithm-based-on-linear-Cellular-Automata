@@ -7,15 +7,17 @@
 #include <climits>
 #include <Rule>
 
+template<typename T>
 class Field
 {
 	Rule rule;
 	std::vector < bool > current;
 	std::vector < bool > next;
-	const size_t lenght = CHAR_BIT;
+	size_t lenght;
   public:
-	  Field(const Rule& rule, const unsigned char field) noexcept:rule(rule)
+	  Field(const Rule& rule, const T field) noexcept:rule(rule)
 	{
+		lenght = sizeof (field) * CHAR_BITS;
 		current.resize(lenght);
 		next.resize(lenght);
 		for (size_t i = 0, j = lenght - 1;  i < lenght; ++i, --j)
@@ -32,9 +34,9 @@ class Field
 		next[0] = rule[current[lenght-1] * 4 + current[0] * 2 + current[1]];
 		next[lenght-1] = rule[current[lenght-2] * 4 + current[lenght-1] * 2 + current[0]];
 		copy(next.begin(), next.end(), current.begin());
-		unsigned char field=0;
+		T field = 0;
 		for (size_t i = 0, j = lenght - 1;  i<lenght; ++i, --j)
-			field+=current[j]*(1<<i);
+			field += current[j]*(1<<i);
 		return field;
 	}
 };
