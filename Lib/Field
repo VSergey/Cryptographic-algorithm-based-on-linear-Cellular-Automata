@@ -14,7 +14,7 @@ class Field
 	std::vector < bool > next;
 	const size_t lenght = sizeof (unsigned short) * CHAR_BIT;
   public:
-	  Field(const Rule& rule, const unsigned short field) noexcept:rule(rule)
+	Field(const Rule& rule, const unsigned short field):rule(rule)
 	{
 		current.resize(lenght);
 		next.resize(lenght);
@@ -23,7 +23,7 @@ class Field
 			current[j] = field & (1 << i);
 		}
 	}
-	unsigned short operator () () noexcept
+	unsigned short operator () ()
 	{
 		for (size_t i = 1; i < lenght - 1; ++i)
 		{
