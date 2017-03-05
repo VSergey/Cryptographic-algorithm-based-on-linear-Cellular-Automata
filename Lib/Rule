@@ -10,7 +10,7 @@ class Rule
 {
 	std::vector<bool> state;
 	public:
-		Rule(const unsigned short number) noexcept
+		Rule(const unsigned short number)
 		{
 			state.resize(8);
 			for (size_t i = 0; i < 8; ++i)
