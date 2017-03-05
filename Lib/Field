@@ -17,7 +17,7 @@ class Field
   public:
 	  Field(const Rule& rule, const T field) noexcept:rule(rule)
 	{
-		lenght = sizeof (field) * CHAR_BITS;
+		lenght = sizeof (field) * CHAR_BIT;
 		current.resize(lenght);
 		next.resize(lenght);
 		for (size_t i = 0, j = lenght - 1;  i < lenght; ++i, --j)
