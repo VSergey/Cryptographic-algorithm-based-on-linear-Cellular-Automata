@@ -2,7 +2,6 @@
 #ifndef LIB_RULE_H
 #define LIB_RULE_H
 
-#include <stdexcept>
 #include <vector>
 #include <cstddef>
 
