@@ -1,14 +1,16 @@
 //Небольшой тест
 #include <Field>
+#include <ncurses.h>
 #include <iostream>
 using namespace std;
 
 int main()
 {
-	for (unsigned short i = 0; i<65536; ++i)
+	for (unsigned short i = 0; i<65535; ++i)
 	{
 		Field unicode_test(110, i);
-		cout<<unicode_test()<<endl;
+		cout<<unicode_test()<<'\n';
+		cin.get();
 	}
 }
 /*
