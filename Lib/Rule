@@ -10,23 +10,15 @@ class Rule
 {
 	std::vector<bool> state;
 	public:
-		Rule(const unsigned short number)
+		Rule(const unsigned short number) noexcept
 		{
 			state.resize(8);
-			if (number < 256)
-			{
-				for (size_t i = 0; i < 8; ++i)
-					state[i] = number & (1<<i);
-			}
-			else
-				throw std::out_of_range( "Неверный номер правила!" );
+			for (size_t i = 0; i < 8; ++i)
+				state[i] = number & (1<<i);
 		} 
-		bool operator[] (const unsigned short neighborhood) const
+		bool operator[] (const unsigned short neighborhood) const noexcept
 		{
-			if (neighborhood < 8)
-				return state[neighborhood];
-			else
-				throw std::out_of_range( "Неверный случай окрестности" );
+			return state[neighborhood];
 		}
 };
 
