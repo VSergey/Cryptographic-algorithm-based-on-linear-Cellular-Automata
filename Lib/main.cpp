@@ -7,7 +7,8 @@ int main()
 {
 	for (unsigned short i = 0; i<65536; ++i)
 	{
-		cout<<Field<unsigned short>(110, i)()<<endl;
+		Field unicode_test(110, i);
+		cout<<unicode_test()<<endl;
 	}
 }
 /*
