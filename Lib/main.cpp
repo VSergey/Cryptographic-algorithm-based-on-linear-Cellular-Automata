@@ -1,6 +1,5 @@
 //Небольшой тест
 #include <Field>
-#include <ncurses.h>
 #include <iostream>
 using namespace std;
 
@@ -10,6 +9,7 @@ int main()
 	{
 		Field unicode_test(110, i);
 		cout<<unicode_test()<<'\n';
+		cin.get();
 	}
 }
 /*
