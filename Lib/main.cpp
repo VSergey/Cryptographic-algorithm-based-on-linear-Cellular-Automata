@@ -5,9 +5,9 @@ using namespace std;
 
 int main()
 {
-	for (unsigned int i = 0; i<256; ++i)
+	for (unsigned short i = 0; i<65536; ++i)
 	{
-		cout<<Field<unsigned int>(110, i)()<<endl;
+		cout<<Field<unsigned short>(110, i)()<<endl;
 	}
 }
 /*
