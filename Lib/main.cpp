@@ -10,7 +10,6 @@ int main()
 	{
 		Field unicode_test(110, i);
 		cout<<unicode_test()<<'\n';
-		cin.get();
 	}
 }
 /*
