@@ -13,11 +13,10 @@ class Field
 	Rule rule;
 	std::vector < bool > current;
 	std::vector < bool > next;
-	size_t lenght;
+	const size_t lenght;
   public:
-	  Field(const Rule& rule, const T field) noexcept:rule(rule)
+	  Field(const Rule& rule, const T field) noexcept:rule(rule), lenght(sizeof (field) * CHAR_BIT)
 	{
-		lenght = sizeof (field) * CHAR_BIT;
 		current.resize(lenght);
 		next.resize(lenght);
 		for (size_t i = 0, j = lenght - 1;  i < lenght; ++i, --j)
