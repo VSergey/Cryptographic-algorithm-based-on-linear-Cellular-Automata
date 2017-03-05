@@ -2,7 +2,6 @@
 #ifndef LIB_FIELD_H
 #define LIB_FIELD_H
 
-#include <algorithm>
 #include <cstddef>
 #include <climits>
 #include <Rule>
@@ -26,12 +25,11 @@ class Field
 	unsigned short operator () ()
 	{
 		for (size_t i = 1; i < lenght - 1; ++i)
-		{
 			next[i] = rule[current[i-1] * 4 + current[i] * 2+ current[i+1]];
-		}
 		next[0] = rule[current[lenght-1] * 4 + current[0] * 2 + current[1]];
 		next[lenght-1] = rule[current[lenght-2] * 4 + current[lenght-1] * 2 + current[0]];
-		copy(next.begin(), next.end(), current.begin());
+		for (size_t i = 0; i < lenght; ++i)
+			current[i] = next[i];
 		unsigned short field = 0;
 		for (size_t i = 0, j = lenght - 1;  i<lenght; ++i, --j)
 			field += current[j]*(1<<i);
