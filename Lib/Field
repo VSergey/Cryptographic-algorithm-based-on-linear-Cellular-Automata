@@ -10,7 +10,7 @@
 template<typename T>
 class Field
 {
-	Rule rule;
+	const Rule rule;
 	std::vector < bool > current;
 	std::vector < bool > next;
 	const size_t lenght;
