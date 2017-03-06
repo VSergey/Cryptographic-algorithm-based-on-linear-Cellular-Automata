@@ -11,15 +11,15 @@ namespace Crypto
 		std::vector < bool > state;
 		public:
 			Rule(const unsigned short number)
-		{
-			state.resize(8);
-			for (size_t i = 0; i < 8; ++i)
-				state[i] = number & (1 << i);
-		}
-		bool operator[] (const unsigned short neighborhood) const noexcept
-		{
-			return state[neighborhood];
-		}
+			{
+				state.resize(8);
+				for (size_t i = 0; i < 8; ++i)
+					state[i] = number & (1 << i);
+			}
+			bool operator[] (const unsigned short neighborhood) const noexcept
+			{
+				return state[neighborhood];
+			}
 	};
 }
 #endif
