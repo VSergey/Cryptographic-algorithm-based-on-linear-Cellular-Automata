@@ -16,9 +16,9 @@ namespace Crypto
 				for (size_t i = 0; i < 8; ++i)
 					state[i] = number & (1 << i);
 			}
-			bool operator[] (const unsigned short neighborhood) const noexcept
+			bool operator[] (const unsigned short neighbourhood) const noexcept
 			{
-				return state[neighborhood];
+				return state[neighbourhood];
 			}
 	};
 }
