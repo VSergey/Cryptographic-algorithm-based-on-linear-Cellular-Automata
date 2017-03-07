@@ -4,7 +4,7 @@
 
 #include <cstddef>
 #include <climits>
-#include <Rule>
+#include <Rule.hpp>
 namespace Crypto
 {
 	class Field
@@ -19,7 +19,7 @@ namespace Crypto
 				current.resize(lenght);
 				next.resize(lenght);
 				for (size_t i = 0, j = lenght - 1; i < lenght; ++i, --j)
-					current[j] = field & (1 << i);
+					current[lenght - i] = field & (1 << i);
 			}
 			unsigned short operator () ()
 			{
