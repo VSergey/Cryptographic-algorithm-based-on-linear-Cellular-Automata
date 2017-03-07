@@ -18,7 +18,7 @@ namespace Crypto
 			{
 				current.resize(lenght);
 				next.resize(lenght);
-				for (size_t i = 0, j = lenght - 1; i < lenght; ++i, --j)
+				for (size_t i = 0; i < lenght; ++i)
 					current[lenght - 1 - i] = field & (1 << i);
 			}
 			unsigned short operator () ()
@@ -31,7 +31,7 @@ namespace Crypto
 					current[i] = next[i];
 				unsigned short field = 0;
 				for (size_t i = 0, j = lenght - 1; i < lenght; ++i, --j)
-					field += current[j] * (1 << i);
+					field += current[lenght - 1 - i] * (1 << i);
 				return field;
 			}
 	};
