@@ -30,7 +30,7 @@ namespace Crypto
 				for (size_t i = 0; i < lenght; ++i)
 					current[i] = next[i];
 				unsigned short field = 0;
-				for (size_t i = 0, j = lenght - 1; i < lenght; ++i, --j)
+				for (size_t i = 0; i < lenght; ++i)
 					field += current[lenght - 1 - i] * (1 << i);
 				return field;
 			}
