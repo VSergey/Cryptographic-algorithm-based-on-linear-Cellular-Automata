@@ -1,5 +1,5 @@
 //Небольшой тест
-#include <Field>
+#include <Field.hpp>
 #include <iostream>
 using namespace std;
 
@@ -11,6 +11,7 @@ int main()
 		cout<<unicode_test()<<'\n';
 		if (i==65535)
 			break;
+		cin.get();
 	}
 }
 /*
