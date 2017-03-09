@@ -1,20 +1,15 @@
 //Небольшой тест
-#include <Field.hpp>
+#include <Field_as_array.hpp>
 #include <iostream>
+#include <ctime>
 using namespace std;
 
 int main()
 {
-	for (unsigned short i = 65; i<91; ++i)
-	{
-		Crypto::Field col_test(110, i);
-		cout<<(char)i<<" = "<<col_test.encrypt()<<'\n';
-	}
-	for (unsigned short i = 97; i<123; ++i)
-	{
-		Crypto::Field col_test(110, i);
-		cout<<(char)i<<" = "<<col_test.encrypt()<<'\n';
-	}
+	unsigned long long start=clock();
+	Crypto::Field col_test(110, 123);
+	unsigned long long end=clock();
+	cout<<end-start<<"тик.";
 }
 /*
 Проверка
