@@ -1,4 +1,4 @@
-//Небольшой тест
+//Небольшой тест 
 #include <Field_as_array.hpp>
 #include <iostream>
 #include <ctime>
@@ -9,7 +9,7 @@ int main()
 	
 	unsigned long long start=clock();
 	Crypto::Field col_test(110, 123);
-	col_test.encrypt();
+	cout<<col_test.encrypt()<<endl;
 	unsigned long long end=clock();
 	cout<<end-start<<"тик.";
 }
