@@ -5,13 +5,15 @@ using namespace std;
 
 int main()
 {
-	for (unsigned short i = 0; i<65536; ++i)
+	for (unsigned short i = 65; i<91; ++i)
 	{
-		Crypto::Field unicode_test(110, i);
-		cout<<unicode_test()<<'\n';
-		if (i==65535)
-			break;
-		cin.get();
+		Crypto::Field col_test(110, i);
+		cout<<(char)i<<" = "<<col_test.encrypt()<<'\n';
+	}
+	for (unsigned short i = 97; i<123; ++i)
+	{
+		Crypto::Field col_test(110, i);
+		cout<<(char)i<<" = "<<col_test.encrypt()<<'\n';
 	}
 }
 /*
