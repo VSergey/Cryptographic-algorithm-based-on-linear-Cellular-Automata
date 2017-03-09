@@ -6,8 +6,10 @@ using namespace std;
 
 int main()
 {
+	
 	unsigned long long start=clock();
 	Crypto::Field col_test(110, 123);
+	col_test.encrypt();
 	unsigned long long end=clock();
 	cout<<end-start<<"тик.";
 }
