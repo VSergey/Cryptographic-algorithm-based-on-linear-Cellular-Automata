@@ -2,6 +2,7 @@
 #define LIB_FIELD_H
 
 #include <cstddef>
+#include <algorithm>
 #include <climits>
 #include <Rule.hpp>
 namespace Crypto
@@ -28,7 +29,7 @@ namespace Crypto
 			{
 				//записываем биты числа в поле (по порядку)
 				for (size_t i = 0; i < lenght; ++i)
-					*(current+lenght - 1 - i) = field & (1 << i);
+					current[lenght - 1 - i] = field & (1 << i);
 			}
 			/*
 				Считаем следующее поколение.
@@ -37,19 +38,18 @@ namespace Crypto
 			unsigned short encrypt()
 			{
 				//пробегаем обычные клетки
-				for (size_t i = 1; i < lenght - 1; ++i)
-					*(next+i) = rule[*(current+i-1)* 4 + *(current+i) * 2 + *(current+i+1)]; //запрашиваем следующее состояние, передавая окрестность в десятичном виде
+				for (bool *itn=next+1, *itc=current+1, *end=next+8; itn<end; ++itn, ++itc)
+					*itn = rule[*(itc - 1) * 4 + *itc * 2 + *(itc + 1) * 1];
 				//обрабатываем крайние клетки
 				//замыкаем поле в кольцо
-				*next = rule[*(current+lenght-1) * 4 + *(current) * 2 + *(current+1)];
-				next[lenght - 1] = rule[*(current+lenght-2) * 4 + *(current+lenght-1) * 2 + *(current)];
+				next[0] = rule[current[lenght - 1] * 4 + current[0] * 2 + current[1]];
+				next[lenght - 1] = rule[current[lenght - 2] * 4 + current[lenght - 1] * 2 + current[0]];
 				//теперь новое поколение стало нынешним
-				for (size_t i = 0; i < lenght; ++i)
-					*(current+i) = *(next+i);
+				std::copy(next, next+8, current);
 				//переводим в десятичную систему счисления и возвращаем текущее поколение
 				unsigned short field = 0;
 				for (size_t i = 0; i < lenght; ++i)
-					field += *(current+lenght-1-i) * (1 << i);
+					field += current[lenght - 1 - i] * (1 << i);
 				return field;
 			}
 	};
