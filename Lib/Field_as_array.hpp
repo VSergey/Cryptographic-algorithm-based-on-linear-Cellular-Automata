@@ -28,8 +28,9 @@ namespace Crypto
 			Field(const Rule & rule, const unsigned short field):rule(rule)
 			{
 				//записываем биты числа в поле (по порядку)
-				for (size_t i = 0, bool *it=current+lenght-1; i < lenght; ++i, --it)
-					*it = field & (1 << i);
+				size_t j=0;
+				for (bool *it=current+lenght-1; j < lenght; ++j, --it)
+					*it = field & (1 << j);
 			}
 			/*
 				Считаем следующее поколение.
