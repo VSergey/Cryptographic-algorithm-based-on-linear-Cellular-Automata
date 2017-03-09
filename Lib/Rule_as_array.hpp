@@ -29,7 +29,7 @@ namespace Crypto
 			*/
 			bool operator[] (const unsigned short neighbourhood) const noexcept
 			{
-				return state[neighbourhood];
+				return *(state+neighbourhood);
 			}
 	};
 }
