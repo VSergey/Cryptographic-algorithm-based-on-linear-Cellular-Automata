@@ -30,7 +30,7 @@ namespace Crypto
 				//записываем биты числа в поле (по порядку)
 				size_t j=0;
 				for (bool *it=current+lenght-1; j < lenght; ++j, --it)
-					*it = field & (1 << j);
+					*it = field & (1 << j++);
 			}
 			/*
 				Считаем следующее поколение.
