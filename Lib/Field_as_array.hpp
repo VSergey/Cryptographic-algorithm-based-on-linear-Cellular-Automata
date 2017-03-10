@@ -40,13 +40,13 @@ namespace Crypto
 			{
 				//пробегаем обычные клетки
 				for (bool *itn=next+1, *itc=current+1, *end=next+lenght-1; itn<end; ++itn, ++itc)
-					*itn = rule[*(itc - 1) * 4 + *itc * 2 + *(itc + 1) * 1];
+					*itn = rule[*(itc - 1) * 4 + *itc * 2 + *(itc + 1)];
 				//обрабатываем крайние клетки
 				//замыкаем поле в кольцо
 				next[0] = rule[current[lenght - 1] * 4 + current[0] * 2 + current[1]];
 				next[lenght - 1] = rule[current[lenght - 2] * 4 + current[lenght - 1] * 2 + current[0]];
 				//теперь новое поколение стало нынешним
-				std::copy(current, current+8, next);
+				std::copy(current, current+lenght, next);
 				//переводим в десятичную систему счисления и возвращаем текущее поколение
 				unsigned short field = 0;
 				for (size_t i = 0; i < lenght; ++i)
