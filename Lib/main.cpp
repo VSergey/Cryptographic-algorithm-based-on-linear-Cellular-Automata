@@ -1,17 +1,16 @@
 //Небольшой тест
-#include <Field_as_array.hpp>
+#include <Field.hpp>
 #include <iostream>
-#include <ctime>
+#include <locale>
 using namespace std;
 
 int main()
 {
-	
-	unsigned long long start=clock();
-	Crypto::Field col_test(110, 1);
-	cout<<col_test.encrypt()<<endl;
-	unsigned long long end=clock();
-	cout<<end-start<<"тик.";
+	wcout.imbue(locale(""));
+	Crypto::Field test(110, 'L');
+	wchar_t l=test.encrypt();
+	wcout<<(wchar_t)test.encrypt()<<endl;
+	wcout<<L"ха-ха";
 }
 /*
 Проверка
