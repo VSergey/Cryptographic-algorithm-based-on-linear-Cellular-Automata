@@ -2,15 +2,16 @@
 #include <Field.hpp>
 #include <iostream>
 #include <locale>
+#include <cstdio>
 using namespace std;
 
 int main()
 {
-	wcout.imbue(locale(""));
+
 	Crypto::Field test(110, 'L');
 	wchar_t l=test.encrypt();
 	wcout<<(wchar_t)test.encrypt()<<endl;
-	wcout<<L"ха-ха";
+	wprintf(&l);
 }
 /*
 Проверка
