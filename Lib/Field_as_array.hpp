@@ -39,8 +39,8 @@ namespace Crypto
 			unsigned short encrypt()
 			{
 				//пробегаем обычные клетки
-				for (bool *itn=next+1, *itc=current+1, *end=next+lenght-1; itn<end; ++itn, ++itc)
-					*itn = rule[*(itc - 1) * 4 + *itc * 2 + *(itc + 1)];
+				for (size_t i = 1; i < lenght-1; ++i)
+					next[i] = rule[current[i-1] * 4 + current[i] * 2 + current[i+1]];
 				//обрабатываем крайние клетки
 				//замыкаем поле в кольцо
 				next[0] = rule[current[lenght - 1] * 4 + current[0] * 2 + current[1]];
