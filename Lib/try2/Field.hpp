@@ -4,7 +4,7 @@
 #include <cstddef>
 #include <algorithm>
 #include <climits>
-#include <Rule.hpp>
+#include "Rule.hpp"
 namespace Crypto
 {
 	const size_t length = sizeof(unsigned short) * CHAR_BIT;
