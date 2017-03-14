@@ -1,7 +1,6 @@
 #ifndef LIB_RULE_H
 #define LIB_RULE_H
 
-#include <vector>
 #include <cstddef>
 namespace Crypto
 {
@@ -10,7 +9,7 @@ namespace Crypto
 		/*
 			Хранит состояние клеток по середине в следующем поколении при каждом случае окрестности.
 		*/
-		std::vector < bool > state;
+		bool state[8];
 		public:
 			/*
 				Принимаем номер элементарного клеточного автомата.
@@ -19,8 +18,6 @@ namespace Crypto
 			*/
 			Rule(const unsigned short number)
 			{
-				//возможны 8 случаев окрестности
-				state.resize(8);
 				//получаем состояния
 				for (size_t i = 0; i < 8; ++i)
 					state[i] = number & (1 << i);
