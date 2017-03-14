@@ -46,7 +46,7 @@ namespace Crypto
 				//обрабатываем крайние клетки
 				//замыкаем поле в кольцо
 				next[0] = rule[current[length - 1] * 4 + current[0] * 2 + current[1]];
-				next[lenght - 1] = rule[current[length - 2] * 4 + current[length - 1] * 2 + current[0]];
+				next[length - 1] = rule[current[length - 2] * 4 + current[length - 1] * 2 + current[0]];
 				//теперь новое поколение стало нынешним
 				for (size_t i = 0; i < length; ++i)
 					current[i] = next[i];
