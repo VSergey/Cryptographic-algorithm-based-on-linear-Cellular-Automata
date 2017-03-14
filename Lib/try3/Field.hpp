@@ -14,24 +14,27 @@ namespace Crypto
 			Вспомогательное поле для просчёта следующего поколения.
 			Размер поля - часто используемая константа.
 		*/
-		const Rule rule;
+		std::vector < bool > rule;
 		std::vector < bool > current;
 		std::vector < bool > next;
 		const size_t length = sizeof(unsigned short) * CHAR_BIT;
 		public:
 		/*
-			Получаем номер клеточного автомата в виде объекта rule и код символа для зашифровки.
-			Устанавливаем размеры и инициализируем поле двоичными разрядами кодируемого числа.
-			Внимание! Конструктор Rule не explicit, вместо первого аргумента можно передать целое число [0;255].
+ 			Получаем номер клеточного автомата (число ∈ [0;255]) и код символа для зашифровки.
+			Устанавливаем размеры и инициализируем поле двоичными разрядами кодируемого числа. Так же получаем правило перехода состояний из номера.
 		*/
-			Field(const Rule & rule, const unsigned short code):rule(rule)
+			Field(const unsigned short number, const unsigned short code):rule(rule)
 			{
 				//ставим размеры
+				rule.resize(8);
 				current.resize(length);
 				next.resize(length);
 				//записываем биты числа в поле (по порядку)
 				for (size_t i = 0; i < length; ++i)
 					current[length - 1 - i] = code & (1 << i);
+				//получаем состояния
+				for (size_t i = 0; i < 8; ++i)
+					rule[i] = number & (1 << i);
 			}
 			/*
 				Считаем следующее поколение.
