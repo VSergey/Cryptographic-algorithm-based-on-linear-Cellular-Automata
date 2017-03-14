@@ -1,7 +1,6 @@
 //Небольшой тест
-#include <Field.hpp>
+#include "try1/Field.hpp"
 #include <iostream>
-#include <locale>
 #include <cstdio>
 using namespace std;
 
