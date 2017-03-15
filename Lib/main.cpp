@@ -34,7 +34,7 @@ int main()
 			temp.encrypt();
 		cipher.push_back(temp.encrypt());
 	}
-	cout << number1 << endl;
+	cout << "Верный результат " << number1 << endl;
 	
 	// начинаем взлом
 	ull start = clock();
