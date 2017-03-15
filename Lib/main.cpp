@@ -10,14 +10,23 @@ typedef unsigned long long ull;
 int main()
 {
 	// создаём случайные данные
+	/*
+		number1 - ключ
+		number2 - количество состояний
+		lenght - длинна строки
+		plain - открытый текст
+		cipher - шифротекст
+	*/
 	srand(time(0));
 	unsigned short number1 = rand() % 256;
 	unsigned short number2 = rand() % 100;
 	unsigned short length = rand() % 9 + 1;
 	vector<unsigned short>plain;
+	//заполняем строку печатаемыми символами
 	for (unsigned short i = 0; i < length; ++i)
-		plain.push_back(rand() % 88 + 40);
+		plain.push_back(rand() % 94 + 33);
 	vector<unsigned short> cipher;
+	//шифруем исходную строку
 	for (unsigned short i = 0; i < length; ++i)
 	{
 		Crypto::Field temp(number1, plain[i]);
@@ -25,34 +34,35 @@ int main()
 			temp.encrypt();
 		cipher.push_back(temp.encrypt());
 	}
-	cout << number1 << endl <<  number2 << endl;
+	cout << number1 << endl;
 	
 	// начинаем взлом
 	ull start = clock();
+	//вектор возможных значений ключа для каждого символа
 	vector < vector <unsigned short> >maybe;
 	maybe.resize(length);
+	//перебираем все возможные ключи для кажого символа
 	for (unsigned short i=0; i<length; ++i)
 	{
 		for (unsigned short ruleNumber=0; ruleNumber<256; ++ruleNumber)
 		{
 			Crypto::Field chance(ruleNumber, plain[i]);
+			//неизвестно сколько поколений, но они зацикливаются, поэтому считаем 100
 			for (unsigned short j=0; j<100; ++j)
 			{
 				unsigned short a = chance.encrypt();
 				if (a==cipher[i])
 				{
+					//заносим
 					maybe[i].push_back(ruleNumber);
-					cout<<i+1<<')'<<a<<'='<<cipher[i]<<' '<<ruleNumber<<' '<<j<<endl;
+					break;
 				}
 			}
 		}
 	}
 	ull end = clock();
 	cout << "Вычислено за " << end - start << " тик." << endl;
-	for (unsigned short i = 0; i < length; ++i)
-	{
-		maybe[i].erase(unique(maybe[i].begin(), maybe[i].end()), maybe[i].end());
-	}
+	//выводим возможные
 	for (unsigned short i = 0; i < length; ++i)
 	{
 		cout<<i+1<<')';
