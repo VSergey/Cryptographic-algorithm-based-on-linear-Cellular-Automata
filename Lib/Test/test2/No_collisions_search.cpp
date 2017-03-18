@@ -3,8 +3,6 @@
 #include <set>
 #include "../../try2/Field.hpp"
 using namespace std;
-/* 
-   Правила с отсутствием коллизий: 169 286 */
 
 int main()
 {
