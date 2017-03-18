@@ -1,6 +1,6 @@
 #include <iostream>
 #include <iomanip>
-#include "try2/Field.hpp"
+#include "../../try2/Field.hpp"
 using namespace std;
 /*
 Правила без коллизий:
