@@ -1,5 +1,5 @@
 //Узнаём ключ по исходному тексту и шифротексту
-#include "try1/Field.hpp"
+#include "../../try1/Field.hpp"
 #include <iostream>
 #include <ctime>
 #include <algorithm>
