@@ -30,7 +30,7 @@ namespace Crypto
 				//записываем биты числа в поле (по порядку)
 				size_t j=0;
 				for (bool *it=current+length-1; j < length; ++j, --it)
-					*it = code & (1 << j++);
+					*it = code & (1 << j);
 			}
 			/*
 				Считаем следующее поколение.
@@ -44,14 +44,24 @@ namespace Crypto
 				//обрабатываем крайние клетки
 				//замыкаем поле в кольцо
 				next[0] = rule[current[length - 1] * 4 + current[0] * 2 + current[1]];
-				next[lenght - 1] = rule[current[length - 2] * 4 + current[length - 1] * 2 + current[0]];
+				next[length - 1] = rule[current[length - 2] * 4 + current[length - 1] * 2 + current[0]];
 				//теперь новое поколение стало нынешним
-				std::copy(current, current+length, next);
+				std::copy(next, next+length, current);
 				//переводим в десятичную систему счисления и возвращаем текущее поколение
 				unsigned short code = 0;
 				for (size_t i = 0; i < length; ++i)
-					code += current[length - 1 - i] * (1 << i);
+					code += next[length - 1 - i] * (1 << i);
 				return code;
+			}
+			/*
+			Принимает количество просчитываемых поколений
+			Последовательно просчитывает все поколения перед необходимым в цикле и считает нужное вне цикла, возвращая его
+			*/
+			unsigned short encrypt(unsigned short stateNumber)
+			{
+				for (size_t i=1; i<stateNumber; ++i)
+					encrypt();
+				return encrypt();
 			}
 	};
 }
