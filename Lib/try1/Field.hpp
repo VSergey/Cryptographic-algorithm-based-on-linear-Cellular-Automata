@@ -56,6 +56,16 @@ namespace Crypto
 					code += current[length - 1 - i] * (1 << i);
 				return code;
 			}
+			/*
+			Принимает количество просчитываемых поколений
+			Последовательно просчитывает все поколения перед необходимым в цикле и считает нужное вне цикла, возвращая его
+			*/
+			unsigned short encrypt(unsigned short stateNumber)
+			{
+				for (size_t i=1; i<stateNumber; ++i)
+					encrypt();
+				return encrypt();
+			}
 	};
 }
 #endif
