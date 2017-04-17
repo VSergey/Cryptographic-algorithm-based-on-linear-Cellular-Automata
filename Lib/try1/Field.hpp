@@ -25,23 +25,22 @@ namespace Crypto
 				Устанавливаем размеры и инициализируем поле двоичными разрядами кодируемого числа.
 				Внимание! Конструктор Rule не explicit, вместо первого аргумента можно передать целое число [0;255].
 			*/
-			Field(const Rule & rule, const unsigned short code)
+			Field(const Rule & rule, const unsigned short code):rule(rule)
+			{
+				//ставим размеры
+				current.resize(length);
+				next.resize(length);
+				//записываем биты числа в поле (по порядку)
+				for (size_t i = 0; i < length; ++i)
+					current[length - 1 - i] = code & (1 << i);
+			}
+
 			/*
 				Считаем следующее поколение.
 				Возвращаем его в виде десятичного числа.
 			*/
 			unsigned short encrypt()
 	};
-}
-
-Crypto::Field::Field(const Rule & rule, const unsigned short code):rule(rule)
-{
-	//ставим размеры
-	current.resize(length);
-	next.resize(length);
-	//записываем биты числа в поле (по порядку)
-	for (size_t i = 0; i < length; ++i)
-		current[length - 1 - i] = code & (1 << i);
 }
 
 unsigned short Crypto::Field::encrypt()
