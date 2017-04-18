@@ -34,7 +34,6 @@ namespace Crypto
 				for (size_t i = 0; i < length; ++i)
 					current[length - 1 - i] = code & (1 << i);
 			}
-
 			/*
 				Считаем следующее поколение.
 				Возвращаем его в виде десятичного числа.
