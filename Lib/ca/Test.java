@@ -1,22 +1,19 @@
-//Небольшой тест
-#include <Field>
-#include <iostream>
-using namespace std;
+package ca;
 
-int main()
-{
-	for (unsigned short i = 0; i<65536; ++i)
-	{
-		Crypto::Field unicode_test(110, i);
-		cout<<unicode_test()<<'\n';
-		if (i==65535)
-			break;
-	}
-}
+public class Test {
+    public static void main() {
+        for (int i = 0; i<65536; i++) {
+            Field test = new Field(new Rule(110), i);
+            int res = test.eval();
+            System.out.println(res);
+            if (i==65535)
+                break;
+        }
+    }
 /*
 Проверка
 ------------------------
-Начальное состояние: 
+Начальное состояние:
 00000000000000000000000000000001
 ------------------------
 Окрестность->состояние (правило 110):
@@ -35,3 +32,4 @@ int main()
 Или:
 1->3
 */
+}
